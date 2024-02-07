@@ -10,18 +10,21 @@
             description="Example Description"
             cost="50"
             logo="/public/vite.svg"
+            subscribed={true}
     />
     <Subscription
             title="Example Title"
             description="Example Description"
             cost="50"
             logo="/public/vite.svg"
+            subscribed={true}
     />
     <Subscription
             title="Example Title"
             description="Example Description"
             cost="50"
             logo="/public/vite.svg"
+            subscribed={false}
     />
 
     <Subscription
@@ -29,6 +32,7 @@
             description="Example Description"
             cost="50"
             logo="/public/vite.svg"
+            subscribed={false}
     />
 </div>
 

@@ -4,6 +4,7 @@
 	export let description: string;
 	export let cost: string;
 	export let logo: string
+    export let subscribed: boolean;
 
 	function handleClick() {
 
