@@ -39,7 +39,7 @@
 <style>
     .subscriptionList {
         display: grid;
-
+        grid-template-columns: repeat(2, 0.5fr);
         justify-content: flex-start;
         align-items: flex-start;
         gap: 5rem;

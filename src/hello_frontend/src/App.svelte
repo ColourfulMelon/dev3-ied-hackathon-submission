@@ -42,9 +42,15 @@
 
 .header {
     display: flex;
+    /*top: 0;*/
     justify-content: space-between;
     /*width: 100vw;*/
-    align-items: center;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
 }
 
 .logo-div {
