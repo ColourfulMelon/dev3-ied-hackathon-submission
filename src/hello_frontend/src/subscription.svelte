@@ -8,6 +8,7 @@
     export let subscription;
 
 	function handleClick() {
+
         selectedSubscription.set(subscription); // set the selected subscription
 	}
 
@@ -30,8 +31,9 @@
         align-items: center;
         margin-bottom: 20px;
         padding: 20px;
-        border: 1px solid #ccc;
+        border: 1px solid #bbb;
         border-radius: 5px;
+        box-shadow: 3px 5px 30px rgba(187, 187, 187, 0.15);
 
     }
 
@@ -60,6 +62,8 @@
         font-weight: bold;
     }
     #subscribed {
-        background-color: green; /* indicate user is subscribed to these tiers */
+        background-color: #93c265; /* indicate user is subscribed to these tiers */
+        border: 1px solid #769c51;
+        box-shadow: 3px 5px 30px rgba(147, 194, 101, 0.24);
     }
 </style>
