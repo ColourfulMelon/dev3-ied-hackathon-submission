@@ -11,9 +11,6 @@
             myComponent = true;
             break;
     }
-
-
-
 </script>
 
 <main>
@@ -27,10 +24,6 @@
     </div>
     <div class="body">
         <SubscriptionList />
-
-
-
-
     </div>
 
 </main>

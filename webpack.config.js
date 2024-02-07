@@ -9,7 +9,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 
 const frontendDirectory = "hello_frontend";
 
-const frontend_entry = path.join("src", frontendDirectory, "index.html");
+const frontend_entry = "./src/hello_frontend/index.html";
 
 module.exports = {
   target: "web",
@@ -17,7 +17,7 @@ module.exports = {
   entry: {
     // The frontend.entrypoint points to the HTML file for this build, so we need
     // to replace the extension to `.js`.
-    // index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
+    index: "./src/hello_frontend/index.html",
   },
   devtool: isDevelopment ? "source-map" : false,
   optimization: {
@@ -90,6 +90,7 @@ module.exports = {
       "/api": {
         target: "http://127.0.0.1:4943",
         changeOrigin: true,
+        writeToDisk: true,
         pathRewrite: {
           "^/api": "/api",
         },

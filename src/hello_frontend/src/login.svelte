@@ -1,31 +1,32 @@
 <script lang="ts">
-    import {
-        createActor,
-        hello_backend,
-    } from "../../declarations/hello_backend";
-    import { AuthClient } from "@dfinity/auth-client";
-    import { HttpAgent } from "@dfinity/agent";
-    let actor = hello_backend;
-    console.log(process.env.CANISTER_ID_INTERNET_IDENTITY);
-
+    // import {
+    //     createActor,
+    //     hello_backend,
+    // } from "../../declarations/hello_backend";
+    // import { AuthClient } from "@dfinity/auth-client";
+    // import { HttpAgent } from "@dfinity/agent";
+    // let actor = hello_backend;
+    // console.log(process.env.CANISTER_ID_INTERNET_IDENTITY);
+    //
     async function handleAuth(){
-        let authClient = await AuthClient.create();
-        // start the login process and wait for it to finish
-        await new Promise((resolve) => {
-            authClient.login({
-                identityProvider:
-                    process.env.DFX_NETWORK === "ic"
-                        ? "https://identity.ic0.app"
-                        : `http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943`,
-                // onSuccess: resolve,
-            });
-        });
-        const identity = authClient.getIdentity();
-        const agent = new HttpAgent({ identity });
-        actor = createActor(process.env.CANISTER_ID_II_INTEGRATION_BACKEND!, {
-            agent,
-        });
-        return false;
+        console.log("auth");
+    //     let authClient = await AuthClient.create();
+    //     // start the login process and wait for it to finish
+    //     await new Promise((resolve) => {
+    //         authClient.login({
+    //             identityProvider:
+    //                 process.env.DFX_NETWORK === "ic"
+    //                     ? "https://identity.ic0.app"
+    //                     : `http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943`,
+    //             // onSuccess: resolve,
+    //         });
+    //     });
+    //     const identity = authClient.getIdentity();
+    //     const agent = new HttpAgent({ identity });
+    //     actor = createActor(process.env.CANISTER_ID_II_INTEGRATION_BACKEND!, {
+    //         agent,
+    //     });
+    //     return false;
     }
 </script>
 
