@@ -41,14 +41,13 @@
 }
 
 .header {
+    margin: 5rem 0;
     display: flex;
-    /*top: 0;*/
     justify-content: space-between;
-    /*width: 100vw;*/
     align-items: flex-start;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 80vw;
     z-index: 1;
 
 }
@@ -61,4 +60,7 @@
     width: 50vw;
 }
 
+h1 {
+    margin: 0;
+}
 </style>
