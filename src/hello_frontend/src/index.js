@@ -1,19 +1,14 @@
-import { hello_backend } from "../../declarations/hello_backend";
+import { btc_payment_backend } from "../../declarations/btc_payment_backend";
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const button = e.target.querySelector("button");
-
-  const name = document.getElementById("name").value.toString();
-
-  button.setAttribute("disabled", true);
 
   // Interact with foo actor, calling the greet method
-  const greeting = await hello_backend.greet(name);
+  const addr = await btc_payment_backend.get_caller_p2pkh_address();
 
   button.removeAttribute("disabled");
 
-  document.getElementById("greeting").innerText = greeting;
+  document.getElementById("btc-address").innerText = addr;
 
   return false;
 });

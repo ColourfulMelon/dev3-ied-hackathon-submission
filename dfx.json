@@ -1,12 +1,12 @@
 {
   "canisters": {
-    "hello_backend": {
-      "main": "src/hello_backend/main.mo",
+    "btc_payment_backend": {
+      "main": "src/btc_payment_backend/Main.mo",
       "type": "motoko"
     },
     "hello_frontend": {
       "dependencies": [
-        "hello_backend"
+        "btc_payment_backend"
       ],
       "frontend": {
         "entrypoint": "src/hello_frontend/src/index.html"
