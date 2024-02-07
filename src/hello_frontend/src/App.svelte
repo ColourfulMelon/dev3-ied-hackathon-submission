@@ -10,7 +10,7 @@
     <div class="header">
 <!--todo: add logo-->
         <div class="logo-div">
-            <img src="/public/vite.svg">
+            <img src="/public/logo.png" width="70px">
             <h1>Subscriptions</h1>
         </div>
         <Login />
@@ -47,6 +47,7 @@
     width: 80vw;
     z-index: 1;
     height: 200px;
+    color: #444444;
     /*margin-bottom: 100px;*/
 }
 
