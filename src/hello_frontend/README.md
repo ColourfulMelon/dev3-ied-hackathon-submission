@@ -1,47 +1,35 @@
-# Svelte + TS + Vite
+# Project Documentation
+## Overview
+This project is a web application built using TypeScript, JavaScript, Node.js, and npm. It uses the Svelte framework for the frontend and the Dfinity Internet Computer for the backend. The project is structured into a frontend and a backend, each with its own source code and configuration files.
+## Frontend
+The frontend is written in Svelte and TypeScript. The entry point of the frontend is src/hello_frontend/index.html. The frontend code is located in the src/hello_frontend/src directory. The main file is login.svelte, which contains the login functionality of the application.  The frontend uses webpack for bundling the application. The configuration for webpack is located in webpack.config.js. This file contains settings for the development and production environments, module rules, plugins, and dev server settings.  The HtmlWebpackPlugin is used to generate an HTML file that includes all webpack bundles in the script tags. The template for this HTML file is specified in the frontend_entry variable.
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+Some frontend development history can be found at [frontend.](https://github.com/ColourfulMelon/hackathon-frontend)
+## Backend
+The backend is written in Motoko and is defined in the dfx.json file. The main file for the backend is src/hello_backend/main.mo. The backend interacts with the Internet Identity service, which is specified in the dfx.json file.
+## Building and Running the Project
+To build the project, use the npm run build command. This will compile the TypeScript and Svelte code into JavaScript, bundle the frontend using webpack, and build the backend using the Dfinity SDK.  To run the project, use the npm start command. This will start the webpack dev server, which serves the frontend, and the Dfinity local network, which runs the backend.
+## Running the project locally
+To run the project locally, you will need to have DFX installed (> v0.12). You can find instructions for that [here.](https://sdk.dfinity.org/docs/quickstart/local-quickstart.html)
+```bash
+# Starts the replica, running in the background
+dfx start --background
 
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
-
-## Need an official Svelte framework?
-
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
-
-## Technical considerations
-
-**Why use this over SvelteKit?**
-
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+# Deploys your canisters to the replica and generates your candid interface
+dfx deploy
 ```
+Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
+## Environment Variables
+Environment variables are used to configure the application. These are loaded from a .env file at the root of the project using the dotenv package. The environment variables include the Dfinity network settings and the canister IDs for the backend and the Internet Identity service.  
+TypeScript Configuration
+The TypeScript configuration is located in src/hello_frontend/tsconfig.json. This file extends the base configuration provided by the @tsconfig/svelte/tsconfig.json package and includes additional settings for the project.
+## Styles
+The styles for the application are written in CSS and are included in the Svelte components. The styles for the login button, for example, are located in the login.svelte file.
+## Assets
+The assets for the frontend, such as images, are located in the src/hello_frontend/assets directory. These are copied to the dist/hello_frontend directory during the build process using the CopyWebpackPlugin.
+## Proxy
+During development, requests to /api are proxied to http://127.0.0.1:4943 using the webpack dev server's proxy feature. This allows the frontend to communicate with the backend running on the local network.
+
+# Limitations and Improvements
+The project is not yet complete. The frontend is not complete and the backend is not yet connected to the frontend. Due to webpack compilation issues and dfx lacking full WSL support which caused issues with testing.
+The smart contract also needs a rate limit system to prevent spamming of the contract thus draining the canister of funds.

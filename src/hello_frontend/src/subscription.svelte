@@ -1,34 +1,40 @@
 <script lang="ts">
-
+    import { selectedSubscription } from './store.js';
 	export let title: string;
 	export let description: string;
 	export let cost: string;
 	export let logo: string
+    export let subscribed: boolean;
+    export let subscription;
 
 	function handleClick() {
 
+        selectedSubscription.set(subscription); // set the selected subscription
 	}
 
 
 </script>
 
-<div class="subscription" on:click={handleClick}>
+<button class="subscription" id="{subscribed ? 'subscribed' : ''}" on:click={handleClick}>
     <img src={logo} alt="Logo" class="logo">
     <div class="details">
         <h2 class="title">{title}</h2>
         <p class="description">{description}</p>
         <p class="cost">Cost: ${cost}</p>
+        <p class="cost">Subscribed: {subscribed ? 'Yes' : 'No'}</p>
     </div>
-</div>
+</button>
 
 <style>
     .subscription {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
+        padding: 20px;
+        border: 1px solid #bbb;
         border-radius: 5px;
+        box-shadow: 3px 5px 30px rgba(187, 187, 187, 0.15);
+
     }
 
     .logo {
@@ -54,5 +60,10 @@
     .cost {
         margin: 0;
         font-weight: bold;
+    }
+    #subscribed {
+        background-color: #93c265; /* indicate user is subscribed to these tiers */
+        border: 1px solid #769c51;
+        box-shadow: 3px 5px 30px rgba(147, 194, 101, 0.24);
     }
 </style>
