@@ -6,7 +6,7 @@
 	export let logo: string
     export let subscribed: boolean;
     import { fly } from 'svelte/transition';
-    // export let subscription;
+    export let subscription = {title, description, cost, logo, subscribed}
 
 	function handleClick() {
 

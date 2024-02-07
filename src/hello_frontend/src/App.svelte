@@ -26,10 +26,20 @@
 </main>
 
 <style>
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5rem;
+    width: 100vw;
+
+}
 .body {
     display: grid;
 
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     gap: 5rem;
     width: 80vw;
