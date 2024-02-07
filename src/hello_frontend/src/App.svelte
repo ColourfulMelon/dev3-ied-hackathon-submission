@@ -1,6 +1,6 @@
 <script lang="ts">
     import SubscriptionList from './subscriptionList.svelte'
-
+    import Login from './login.svelte'
     let myComponent = false;
     let componentTitle = '';
     switch (componentTitle) {
@@ -23,10 +23,7 @@
             <img src="/public/vite.svg">
             <h1>Subscriptions</h1>
         </div>
-        <div class="auth">
-            <button id="login-button"> <img id="login" src="/public/IC_logo.png" width="50px"><p id="login">Login</p></button>
-<!--            <p id="principal"></p>-->
-        </div>
+        <Login />
     </div>
     <div class="body">
         <SubscriptionList />
