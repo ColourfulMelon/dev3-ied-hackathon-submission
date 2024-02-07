@@ -1,12 +1,37 @@
 # Project Documentation
+## Live deployment
+https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=kvkqv-3aaaa-aaaam-ab6ka-cai
+
 ## Overview
-This project is a web application built using TypeScript, JavaScript, Node.js, and npm. It uses the Svelte framework for the frontend and the Dfinity Internet Computer for the backend. The project is structured into a frontend and a backend, each with its own source code and configuration files.  
-## Frontend
+This project is an attempt at implementing an on-chain subscription management standard on the Internet Computer. It consists of a canister which acts as a fully autonomous subscription handling system. 
+
+Motivations:
+Payment handling systems using traditional systems are often difficult to implement and secure. By implementing an open-source, secure, and decentralised solution, all the heavy lifting of traditional payment systems can be delegated to an ICP subnet, rather than internal servers. Additionally, the use of Bitcoin opens up services to a global userbase, rather than being limited.
+
+It enables the following features:
+- Serverless management of subscriptions to your service
+- Let users to subscribe for variable durations (in days)
+- Allow users to renew their subscriptions at will
+- Authentication/identification using Internet Identities on ICP.
+
+This has various benefits such as:
+- Secure and transparent subscription management
+- No need for third-party services
+- Easy to use and integrate
+
+Several improvements to this early prototype can be made in future iterations, including:
+- Use of ckBTC over BTC will improve transaction speeds, fees. Additionally, through the use of canister timers, a fully automated system in which periodic payments can be taken from users, until they cancel their subscription.
+- Multiple subscription types to differentiate tiers/access levels for separate users.
+- Use of different ICRC1/ICRC2 tokens can provide a lower barrier of entry for users interested in a service.
+
+## Backend
+The backend is written in Motoko and is defined in the dfx.json file. The main file for the backend is src/btc_payment_backend/Main.mo. 
+
+## Frontend (incomplete - see "Frontend Screenshots" folder for previews)
 The frontend is written in Svelte and TypeScript. The entry point of the frontend is src/hello_frontend/index.html. The frontend code is located in the src/hello_frontend/src directory. The main file is login.svelte, which contains the login functionality of the application.  The frontend uses webpack for bundling the application. The configuration for webpack is located in webpack.config.js. This file contains settings for the development and production environments, module rules, plugins, and dev server settings.  The HtmlWebpackPlugin is used to generate an HTML file that includes all webpack bundles in the script tags. The template for this HTML file is specified in the frontend_entry variable.  
 
 Some frontend development history can be found at [frontend.](https://github.com/ColourfulMelon/hackathon-frontend)
-## Backend
-The backend is written in Motoko and is defined in the dfx.json file. The main file for the backend is src/hello_backend/main.mo. The backend interacts with the Internet Identity service, which is specified in the dfx.json file.  
+
 ## Building and Running the Project
 To build the project, use the npm run build command. This will compile the TypeScript and Svelte code into JavaScript, bundle the frontend using webpack, and build the backend using the Dfinity SDK.  To run the project, use the npm start command. This will start the webpack dev server, which serves the frontend, and the Dfinity local network, which runs the backend.  
 ## Running the project locally
