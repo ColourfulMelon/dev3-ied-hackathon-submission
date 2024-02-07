@@ -5,6 +5,7 @@
 	export let cost: string;
 	export let logo: string
     export let subscribed: boolean;
+    import { fly } from 'svelte/transition';
     // export let subscription;
 
 	function handleClick() {
@@ -15,7 +16,7 @@
 
 </script>
 
-<button class="subscription" id="{subscribed ? 'subscribed' : ''}" on:click={handleClick}>
+<button class="subscription" id="{subscribed ? 'subscribed' : ''}" on:click={handleClick} in:fly={{ y: 200, duration: 500 }}>
     <img src={logo} alt="Logo" class="logo">
     <div class="details">
         <h2 class="title">{title}</h2>
