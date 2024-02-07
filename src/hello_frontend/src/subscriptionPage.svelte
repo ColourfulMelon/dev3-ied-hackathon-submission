@@ -1,16 +1,16 @@
 <script lang="ts">
-    export let title: string;
-    export let description: string;
-    export let cost: string;
-    export let logo: string
+    export let selectedSubscription: {title: string, description: string};
 </script>
 
-<div class="item-details">
-    <h1>{title}</h1>
-    <img src={logo}>
-    <!-- todo add more details -->
+<div class="subscriptionDetail">
+    <!-- Display the subscription props here -->
+    <h1>{selectedSubscription.title}</h1>
+    <p>{selectedSubscription.description}</p>
+    <!-- Add more fields as needed -->
 </div>
 
 <style>
-    /* Styles for item details component */
+    .subscriptionDetail {
+        /* Add your styles here */
+    }
 </style>

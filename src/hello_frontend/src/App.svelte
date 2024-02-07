@@ -1,16 +1,9 @@
 <script lang="ts">
     import SubscriptionList from './subscriptionList.svelte'
+    import SubscriptionPage from './subscriptionPage.svelte';
     import Login from './login.svelte'
-    let myComponent = false;
-    let componentTitle = '';
-    switch (componentTitle) {
-        case '':
-            myComponent = false;
-            break;
-        default:
-            myComponent = true;
-            break;
-    }
+    import { selectedSubscription } from './store.js';
+
 </script>
 
 <main>
@@ -23,7 +16,11 @@
         <Login />
     </div>
     <div class="body">
-        <SubscriptionList />
+        {#if $selectedSubscription} <!-- If a subscription is selected -->
+            <SubscriptionPage selectedSubscription={$selectedSubscription}/> <!-- Render SubscriptionDetail -->
+        {:else} <!-- Else -->
+            <SubscriptionList /> <!-- else Render SubscriptionList -->
+        {/if}
     </div>
 
 </main>
