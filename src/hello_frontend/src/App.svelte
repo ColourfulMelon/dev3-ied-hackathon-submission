@@ -62,20 +62,4 @@
     width: 50vw;
 }
 
-#login {
-    color: #000000;
-
-}
-
-#login-button {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
-}
 </style>

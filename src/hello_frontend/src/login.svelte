@@ -17,12 +17,12 @@
                     process.env.DFX_NETWORK === "ic"
                         ? "https://identity.ic0.app"
                         : `http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943`,
-                onSuccess: resolve,
+                // onSuccess: resolve,
             });
         });
         const identity = authClient.getIdentity();
         const agent = new HttpAgent({ identity });
-        actor = createActor(process.env.CANISTER_ID_II_INTEGRATION_BACKEND, {
+        actor = createActor(process.env.CANISTER_ID_II_INTEGRATION_BACKEND!, {
             agent,
         });
         return false;
