@@ -5,7 +5,8 @@
 	export let cost: string;
 	export let logo: string
     export let subscribed: boolean;
-    export let subscription;
+    import { fly } from 'svelte/transition';
+    // export let subscription;
 
 	function handleClick() {
 
@@ -15,7 +16,7 @@
 
 </script>
 
-<button class="subscription" id="{subscribed ? 'subscribed' : ''}" on:click={handleClick}>
+<button class="subscription" id="{subscribed ? 'subscribed' : ''}" on:click={handleClick} in:fly={{ y: 200, duration: 500 }}>
     <img src={logo} alt="Logo" class="logo">
     <div class="details">
         <h2 class="title">{title}</h2>
@@ -33,7 +34,9 @@
         padding: 20px;
         border: 1px solid #bbb;
         border-radius: 5px;
-        box-shadow: 3px 5px 30px rgba(187, 187, 187, 0.15);
+        box-shadow: 3px 5px 30px rgba(14, 14, 14, 0.15);
+        color: rgb(68, 68, 68);
+        background: #c5ffff;
 
     }
 
@@ -62,7 +65,7 @@
         font-weight: bold;
     }
     #subscribed {
-        background-color: #93c265; /* indicate user is subscribed to these tiers */
+        background-color: #bcfc78; /* indicate user is subscribed to these tiers */
         border: 1px solid #769c51;
         box-shadow: 3px 5px 30px rgba(147, 194, 101, 0.24);
     }
