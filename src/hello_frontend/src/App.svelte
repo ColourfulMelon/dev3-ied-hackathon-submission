@@ -36,8 +36,8 @@
     align-items: flex-start;
     gap: 5rem;
     width: 80vw;
-    /*height: 20vh;*/
 
+    margin-top: 200px;
 }
 
 .header {
@@ -49,7 +49,8 @@
     top: 0;
     width: 80vw;
     z-index: 1;
-
+    height: 200px;
+    /*margin-bottom: 100px;*/
 }
 
 .logo-div {
@@ -57,10 +58,29 @@
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
-    width: 50vw;
+    /*width: 50vw;*/
 }
 
 h1 {
     margin: 0;
+}
+
+
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+        width: 100vw;
+        margin: 0;
+    }
+    .logo-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        /*width: 50vw;*/
+    }
+
 }
 </style>
