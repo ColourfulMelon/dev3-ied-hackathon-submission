@@ -4,12 +4,16 @@
       "main": "src/btc_payment_backend/Main.mo",
       "type": "motoko"
     },
+    "internet_identity" : {
+      "type": "pull",
+      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+    },
     "hello_frontend": {
       "dependencies": [
         "btc_payment_backend"
       ],
       "frontend": {
-        "entrypoint": "src/hello_frontend/src/index.html"
+        "entrypoint": "src/hello_frontend/index.html"
       },
       "source": [
         "src/hello_frontend/assets",

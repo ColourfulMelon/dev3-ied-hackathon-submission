@@ -9,7 +9,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 
 const frontendDirectory = "hello_frontend";
 
-const frontend_entry = path.join("src", frontendDirectory, "src", "index.html");
+const frontend_entry = "./src/hello_frontend/index.html";
 
 module.exports = {
   target: "web",
@@ -17,7 +17,7 @@ module.exports = {
   entry: {
     // The frontend.entrypoint points to the HTML file for this build, so we need
     // to replace the extension to `.js`.
-    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
+    index: "./src/hello_frontend/index.html",
   },
   devtool: isDevelopment ? "source-map" : false,
   optimization: {
@@ -25,14 +25,12 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   resolve: {
-    extensions: [".js", ".ts", ".jsx", ".tsx"],
-    fallback: {
-      assert: require.resolve("assert/"),
-      buffer: require.resolve("buffer/"),
-      events: require.resolve("events/"),
-      stream: require.resolve("stream-browserify/"),
-      util: require.resolve("util/"),
+    alias: {
+      svelte: path.resolve('node_modules', 'svelte/src/runtime') // Svelte 3: path.resolve('node_modules', 'svelte')
     },
+    extensions: ['.mjs', '.js', '.svelte'],
+    mainFields: ['svelte', 'browser', 'module', 'main'],
+    conditionNames: ['svelte', 'browser', 'import']
   },
   output: {
     filename: "index.js",
@@ -44,12 +42,21 @@ module.exports = {
   // webpack configuration. For example, if you are using React
   // modules and CSS as described in the "Adding a stylesheet"
   // tutorial, uncomment the following lines:
-  // module: {
-  //  rules: [
-  //    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-  //    { test: /\.css$/, use: ['style-loader','css-loader'] }
-  //  ]
-  // },
+  module: {
+    rules: [
+          {
+            test: /\.(html|svelte)$/,
+            use: 'svelte-loader'
+          },
+      {
+        // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
+        test: /node_modules\/svelte\/.*\.mjs$/,
+        resolve: {
+          fullySpecified: false
+        }
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, frontend_entry),
@@ -83,6 +90,7 @@ module.exports = {
       "/api": {
         target: "http://127.0.0.1:4943",
         changeOrigin: true,
+        writeToDisk: true,
         pathRewrite: {
           "^/api": "/api",
         },
